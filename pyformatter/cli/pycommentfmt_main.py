@@ -5,6 +5,7 @@ import re
 import sys
 
 from pyformatter.config import load_config
+from pyformatter.formatters.pycommentfmt import format_comments
 from pyformatter.utils import should_format_file
 
 
@@ -60,8 +61,9 @@ def main():
                 all_files.append(path)
 
     for path in all_files:
-        # TODO: Import comment formatting logic here
-        pass
+        changed = format_comments(path, args.line_length, args.check)
+        if changed:
+            modified = True
 
-    if modified:
+    if args.check and modified:
         sys.exit(1)

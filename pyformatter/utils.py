@@ -2,9 +2,7 @@ import re
 
 
 def should_format_file(
-    file_path: str,
-    compiled_include: re.Pattern,
-    compiled_exclude: re.Pattern
+    file_path: str, compiled_include: re.Pattern, compiled_exclude: re.Pattern
 ) -> bool:
     """Determine if the file should be formatted.
 
