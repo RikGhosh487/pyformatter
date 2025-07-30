@@ -1,7 +1,7 @@
 [project]
 name = "pyformatter"
 version = "0.1.0"
-dependencies = ["tomllib"]
+dependencies = []
 requires-python = ">=3.11"
 
 [project.scripts]
