@@ -1,0 +1,25 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 25.1.0
+    hooks:
+      - id: black
+        name: black (formatter)
+        language_version: python3
+        exclude: ^(build|dist|\.git|__pycache__|\.egg|doc|version)/
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 6.0.1
+    hooks:
+      - id: isort
+        name: isort (formatter)
+        language_version: python3
+        exclude: ^(build|dist|\.git|__pycache__|\.egg|doc|version)/
+
+  - repo: local
+    hooks:
+      - id: pycommentfmt
+        name: pycommentfmt (formatter)
+        entry: pycommentfmt
+        language: python
+        types: [python]
+        require_serial: true
