@@ -10,9 +10,10 @@ from pyformatter.formatters.pycommentfmt import format_comments
 class TestPyCommentFmt(unittest.TestCase):
 
     def _write_and_readback(self, content, line_length=88, check=False):
-        with tempfile.NamedTemporaryFile(mode="w+", delete=False, suffix=".py") as tf:
+        with tempfile.NamedTemporaryFile(
+            mode="w+", delete=False, suffix=".py", encoding="utf-8"
+        ) as tf:
             tf.write(content)
-            tf.seek(0)
             filename = tf.name
 
         try:
@@ -105,6 +106,7 @@ class TestPyCommentFmt(unittest.TestCase):
         self.assertIn(":3: comment needs formatting", stdout)
         self.assertNotIn(":4:", stdout)  # code comment block preserved
         self.assertNotIn(":5:", stdout)
+
 
 if __name__ == "__main__":
     unittest.main()
