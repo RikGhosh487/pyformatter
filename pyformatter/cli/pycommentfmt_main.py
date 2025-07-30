@@ -6,7 +6,7 @@ import sys
 
 from pyformatter.config import load_config
 from pyformatter.formatters.pycommentfmt import format_comments
-from pyformatter.utils import should_format_file
+from pyformatter.utils import collect_files
 
 
 def main():
@@ -48,19 +48,9 @@ def main():
     compiled_exclude = re.compile(args.exclude) if args.exclude else None
 
     # Expand all files from directories, and apply filters
-    all_files = []
-    for path in args.files:
-        if os.path.isdir(path):
-            for root, _, filenames in os.walk(path):
-                for fname in filenames:
-                    full = os.path.join(root, fname)
-                    if should_format_file(full, compiled_include, compiled_exclude):
-                        all_files.append(full)
-        else:
-            if should_format_file(path, compiled_include, compiled_exclude):
-                all_files.append(path)
+    target_files = collect_files(args.files, compiled_include, compiled_exclude)
 
-    for path in all_files:
+    for path in target_files:
         changed = format_comments(path, args.line_length, args.check)
         if changed:
             modified = True

@@ -36,4 +36,3 @@ skip = ["build", "dist", "tests"]
 [tool.pycommentfmt]
 line_length = 88
 exclude = '(^tests/data/|build/)'
-include = '\\.py$'
