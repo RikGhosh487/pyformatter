@@ -1,13 +1,20 @@
 import argparse
-import sys
+import logging
 import os
+import re
+import sys
+
 from pyformatter.config import load_config
 from pyformatter.utils import should_format_file
 
 
 def main():
     """Main entry point for the script."""
-    config = load_config("pycommentfmt")
+
+    logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger("pycommentfmt")
+
+    config = load_config("pycommentfmt", logger)
 
     parser = argparse.ArgumentParser(description="Format Python comments.")
     parser.add_argument("files", nargs="+", help="Python files to format.")
@@ -36,6 +43,9 @@ def main():
     args = parser.parse_args()
     modified = False
 
+    compiled_include = re.compile(args.include)
+    compiled_exclude = re.compile(args.exclude) if args.exclude else None
+
     # Expand all files from directories, and apply filters
     all_files = []
     for path in args.files:
@@ -43,10 +53,10 @@ def main():
             for root, _, filenames in os.walk(path):
                 for fname in filenames:
                     full = os.path.join(root, fname)
-                    if should_format_file(full, args.include, args.exclude):
+                    if should_format_file(full, compiled_include, compiled_exclude):
                         all_files.append(full)
         else:
-            if should_format_file(path, args.include, args.exclude):
+            if should_format_file(path, compiled_include, compiled_exclude):
                 all_files.append(path)
 
     for path in all_files:

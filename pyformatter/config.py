@@ -1,8 +1,9 @@
-import tomllib
+import logging
 import os
+import tomllib
 
 
-def load_config(tool_name: str) -> dict:
+def load_config(tool_name: str, logger: logging.Logger) -> dict:
     """Load configuration for the specified tool from pyproject.toml.
 
     This function reads the configuration for a given tool from the
@@ -11,6 +12,7 @@ def load_config(tool_name: str) -> dict:
 
     Args:
         tool_name (str): The name of the tool to load configuration for.
+        logger (logging.Logger): Logger instance for logging messages.
 
     Returns:
         dict: The configuration dictionary for the specified tool.
@@ -28,6 +30,7 @@ def load_config(tool_name: str) -> dict:
         try:
             config = tomllib.load(f)
         except tomllib.TOMLDecodeError as e:
+            logger.warning(f"Failed to decode pyproject.toml: {e}")
             return {}
 
     return config.get("tool", {}).get(tool_name, {})

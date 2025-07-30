@@ -1,7 +1,11 @@
 import re
 
 
-def should_format_file(file_path: str, include: str, exclude: str) -> bool:
+def should_format_file(
+    file_path: str,
+    compiled_include: re.Pattern,
+    compiled_exclude: re.Pattern
+) -> bool:
     """Determine if the file should be formatted.
 
     This function checks if the file matches the include pattern
@@ -9,18 +13,18 @@ def should_format_file(file_path: str, include: str, exclude: str) -> bool:
 
     Args:
         file_path (str): The path to the file.
-        include (str): Regex pattern for files to include.
-        exclude (str): Regex pattern for files to exclude.
+        compiled_include (re.Pattern): Compiled regex pattern for files to include.
+        compiled_exclude (re.Pattern): Compiled regex pattern for files to exclude.
 
     Returns:
         bool: True if the file should be formatted, False otherwise.
     """
     # Check if the file matches the include pattern
-    if not re.search(include, file_path):
+    if not compiled_include.search(file_path):
         return False
 
     # Check if the file matches the exclude pattern
-    if exclude and re.search(exclude, file_path):
+    if compiled_exclude and compiled_exclude.search(file_path):
         return False
 
     return True
