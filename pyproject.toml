@@ -7,3 +7,33 @@ requires-python = ">=3.11"
 [project.scripts]
 pydocfmt = "pyformatter.cli.pydocfmt_main:main"
 pycommentfmt = "pyformatter.cli.pycommentfmt_main:main"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | tests/data
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_third_party = ["pyformatter"]
+skip = ["build", "dist", "tests"]
+
+[tool.pycommentfmt]
+line_length = 88
+exclude = '(^tests/data/|build/)'
+include = '\\.py$'
