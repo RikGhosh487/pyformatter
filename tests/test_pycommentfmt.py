@@ -106,5 +106,5 @@ class TestPyCommentFmt(unittest.TestCase):
         self.assertNotIn(":4:", stdout)  # code comment block preserved
         self.assertNotIn(":5:", stdout)
 
-    if __name__ == "__main__":
-        unittest.main()
+if __name__ == "__main__":
+    unittest.main()
