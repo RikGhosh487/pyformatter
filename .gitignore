@@ -1,2 +1,17 @@
 __pycache__
 .DS_Store
+
+# Packages
+*.egg
+*.egg-info
+.eggs
+build
+eggs
+parts
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+MANIFEST
