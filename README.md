@@ -24,6 +24,7 @@
 - [Integration](#integration)
   - [Pre-commit](#pre-commit)
   - [Editor Integration](#editor-integration)
+- [Security](#security)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -226,6 +227,17 @@ pyformatter works great with:
 - **Configurable**: Adapt to your team's style preferences
 - **Reliable**: Extensively tested with comprehensive test suite
 - **Simple**: Easy to integrate into existing workflows
+
+---
+
+## Security
+
+Security is important to us. If you discover a security vulnerability, please report it responsibly by following our [Security Policy](SECURITY.md).
+
+For general security best practices when using pyformatter:
+- Always review changes made by pyformatter before committing
+- Keep pyformatter updated to the latest version
+- When processing untrusted code, consider running pyformatter in an isolated environment
 
 ---
 
