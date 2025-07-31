@@ -218,13 +218,59 @@ def format_examples_section(
     def flush_block():
         if not block:
             return
+
         if is_fenced_block(block):
-            result.extend(f"{param_indent}{line.lstrip()}" for line in block)
-            result.append("\n")
+            # For fenced blocks, preserve indentation within the fences
+            result.append(f"{param_indent}{block[0].strip()}")  # Opening ```
+
+            # Find minimum indentation of non-empty lines between fences
+            content_lines = block[1:-1]  # Exclude opening and closing ```
+            non_empty_lines = [line for line in content_lines if line.strip()]
+
+            if non_empty_lines:
+                min_indent = min(
+                    len(line) - len(line.lstrip()) for line in non_empty_lines
+                )
+
+                for line in content_lines:
+                    if line.strip():
+                        # Remove minimum indentation and add param_indent
+                        relative_content = (
+                            line[min_indent:]
+                            if len(line) > min_indent
+                            else line.lstrip()
+                        )
+                        result.append(f"{param_indent}{relative_content}")
+                    else:
+                        result.append("")
+
+            result.append(f"{param_indent}{block[-1].strip()}")  # Closing ```
         else:
+            # For unfenced blocks, wrap in ``` and preserve indentation
             result.append(f"{param_indent}```")
-            result.extend(f"{param_indent}{line.lstrip()}" for line in block)
-            result.append(f"{param_indent}```\n")
+
+            # Find minimum indentation of non-empty lines
+            non_empty_lines = [line for line in block if line.strip()]
+
+            if non_empty_lines:
+                min_indent = min(
+                    len(line) - len(line.lstrip()) for line in non_empty_lines
+                )
+
+                for line in block:
+                    if line.strip():
+                        # Remove minimum indentation and add param_indent
+                        relative_content = (
+                            line[min_indent:]
+                            if len(line) > min_indent
+                            else line.lstrip()
+                        )
+                        result.append(f"{param_indent}{relative_content}")
+                    else:
+                        result.append("")
+
+            result.append(f"{param_indent}```")
+
         block.clear()
 
     for line in buffer:
@@ -232,12 +278,10 @@ def format_examples_section(
             block.append(line.rstrip())
         elif block:
             flush_block()
-            result.append("\n")
+            if result and not result[-1].endswith("\n"):
+                result.append("")
 
     flush_block()
-
-    if result and result[-1].strip() == "":
-        result.pop()
 
     return [line + "\n" if not line.endswith("\n") else line for line in result]
 

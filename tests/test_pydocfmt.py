@@ -211,6 +211,28 @@ Examples:
         )
         self._format_and_check(doc, expected)
 
+    def test_examples_section_with_code_block(self):
+        doc = """Gives an example.
+
+Examples:
+    def example_function():
+        pass
+    example_function()"""
+        expected = textwrap.dedent(
+            """\
+            \"\"\"Gives an example.
+
+            Examples:
+                ```
+                def example_function():
+                    pass
+                example_function()
+                ```
+            \"\"\"
+        """
+        )
+        self._format_and_check(doc, expected)
+
     def test_full_docstring_all_section(self):
         doc = """Format a section with parameters.
 
