@@ -1,11 +1,12 @@
+# Byte-compiled / optimized / DLL files
 __pycache__
-.DS_Store
 
-# Packages
+# Build and distribution
+build
+dist
 *.egg
 *.egg-info
 .eggs
-build
 eggs
 parts
 var
@@ -15,3 +16,24 @@ develop-eggs
 lib
 lib64
 MANIFEST
+
+# Virtual environments
+.venv
+venv
+.env
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.coverage
+htmlcov
+.pytest_cache
+.tox
