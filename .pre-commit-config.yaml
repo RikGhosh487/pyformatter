@@ -29,3 +29,12 @@ repos:
         language: python
         types: [python]
         require_serial: true
+
+  # Example of how external users would use pyformatter hooks:
+  # - repo: https://github.com/RikGhosh487/pyformatter
+  #   rev: v0.1.0
+  #   hooks:
+  #     - id: pydocfmt
+  #       args: [--line-length=88]
+  #     - id: pycommentfmt
+  #       args: [--line-length=88]

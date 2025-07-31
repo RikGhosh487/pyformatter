@@ -69,9 +69,11 @@ pip install -e .[dev]
 # Install pre-commit hooks
 pre-commit install
 
-# Test the hooks
+# Test the hooks (this will use the local development version)
 pre-commit run --all-files
 ```
+
+**Note**: During development, the pre-commit hooks use the local version of pyformatter. External users will use the published version from the repository.
 
 ### 4. Verify Installation
 

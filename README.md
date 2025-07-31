@@ -203,12 +203,37 @@ Add pyformatter to your `.pre-commit-config.yaml`:
 ```yaml
 repos:
   - repo: https://github.com/RikGhosh487/pyformatter
-    rev: v0.1.0
+    rev: v0.1.0  # Use the ref you want to point at
     hooks:
       - id: pydocfmt
         args: [--line-length=88]
       - id: pycommentfmt
         args: [--line-length=88]
+```
+
+**Available hooks:**
+- `pydocfmt`: Format docstrings (modifies files)
+- `pydocfmt-check`: Check docstring formatting (read-only)
+- `pycommentfmt`: Format comments (modifies files)
+- `pycommentfmt-check`: Check comment formatting (read-only)
+
+**Common configurations:**
+```yaml
+# Basic usage
+- id: pydocfmt
+- id: pycommentfmt
+
+# Custom line length
+- id: pydocfmt
+  args: [--line-length=100]
+
+# Check only (for CI)
+- id: pydocfmt-check
+- id: pycommentfmt-check
+
+# With file exclusions
+- id: pydocfmt
+  args: [--exclude=tests/.*]
 ```
 
 ### Editor Integration

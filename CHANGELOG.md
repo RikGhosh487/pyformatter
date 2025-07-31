@@ -67,6 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Developer Experience**:
   - Pre-commit hook configuration
+  - Pre-commit hooks for external repositories (`.pre-commit-hooks.yaml`)
   - GitHub Actions CI/CD workflows
   - Black and isort integration
   - Development environment configuration
