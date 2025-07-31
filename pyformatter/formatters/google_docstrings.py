@@ -470,7 +470,7 @@ def reflow(docstring: str, line_length: int, indent: str) -> list[str]:
                 paragraph.clear()
 
     # Remove trailing empty line if no sections follow
-    if result and result[-1].strip() == "" and not sections:
+    if result and result[-1].strip() == "":
         result.pop()
 
     # Step 3: Format sections
