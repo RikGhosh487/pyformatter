@@ -231,13 +231,19 @@ pyformatter works great with:
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+Contributions are welcome! We appreciate bug reports, feature requests, documentation improvements, and code contributions.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+For detailed information on how to contribute, please see our [Contributing Guide](CONTRIBUTING.md).
+
+**Quick Start for Contributors:**
+1. Fork the repository and clone your fork
+2. Set up the development environment: `pip install -e .[dev]`
+3. Install pre-commit hooks: `pre-commit install`
+4. Make your changes and add tests
+5. Run the test suite: `python -m unittest discover -s tests -v`
+6. Submit a pull request
+
+For bug reports and feature requests, please [open an issue](https://github.com/RikGhosh487/pyformatter/issues).
 
 ---
 

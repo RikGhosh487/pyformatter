@@ -40,6 +40,7 @@ Homepage = "https://github.com/RikGhosh487/pyformatter"
 Repository = "https://github.com/RikGhosh487/pyformatter"
 Issues = "https://github.com/RikGhosh487/pyformatter/issues"
 Changelog = "https://github.com/RikGhosh487/pyformatter/blob/main/CHANGELOG.md"
+Contributing = "https://github.com/RikGhosh487/pyformatter/blob/main/CONTRIBUTING.md"
 
 [project.optional-dependencies]
 dev = [

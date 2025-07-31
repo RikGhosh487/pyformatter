@@ -138,7 +138,7 @@ This is the initial release of **pyformatter**, introducing two powerful Python 
 
 ## Contributing
 
-We welcome contributions! Please see our [Contributing Guidelines](README.md#contributing) for details on how to:
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on how to:
 - Report bugs and request features
 - Submit pull requests
 - Set up the development environment
