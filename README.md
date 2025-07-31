@@ -12,8 +12,27 @@
 
 ---
 
+## Key Features
+
+### pydocfmt
+- **Google-style docstring formatting**: Complete support for Google docstring conventions
+- **Multi-line summary handling**: Intelligently formats long summaries that span multiple lines
+- **Smart section parsing**: Properly handles Args, Returns, Raises, Examples, and other sections
+- **Code block preservation**: Maintains formatting within Examples sections with automatic fencing
+- **Type annotation support**: Handles parameter type annotations gracefully
+- **Blank line management**: Ensures proper spacing between summary, description, and sections
+
+### pycommentfmt
+- **Intelligent comment wrapping**: Respects line length while preserving meaning
+- **Inline vs block comment handling**: Different formatting strategies for different comment types
+- **Special comment preservation**: Maintains pylint, mypy, and other tool directives
+- **Smart spacing**: Ensures consistent spacing between code and comments
+
+---
+
 ## Table of Contents
 
+- [Key Features](#key-features)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
 - [Command Line Usage](#command-line-usage)

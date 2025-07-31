@@ -7,11 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- Initial project release preparation
-- Comprehensive README with usage examples and integration guides
+## [0.1.1] - 2025-07-31
 
-## [0.1.0] - 2025-01-31
+### Fixed
+- Multi-line summaries are now properly treated as a single summary block instead of splitting into summary + description
+- Proper blank line spacing between summary and sections when no description is present
+- Improved formatting consistency for various docstring structures
+- Enhanced multi-line summary support in Google-style docstring formatting
+
+## [0.1.0] - 2025-07-31
 
 ### Added
 - **pydocfmt**: Command-line tool for formatting Python docstrings
@@ -153,5 +157,6 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 
 ---
 
-[Unreleased]: https://github.com/RikGhosh487/pyformatter/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/RikGhosh487/pyformatter/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/RikGhosh487/pyformatter/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/RikGhosh487/pyformatter/releases/tag/v0.1.0
