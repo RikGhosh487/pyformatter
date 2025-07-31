@@ -104,7 +104,7 @@ pycommentfmt [--line-length=88] [--check] [--include=PATTERN] [--exclude=PATTERN
 
 ### What's New in v0.1.0
 
-This is the initial release of **pyformatter**, introducing two powerful Python code formatting tools designed to complement existing formatters like Black and isort.
+This is the initial release of **pyformatter** (published as `python-doc-formatter` on PyPI), introducing two powerful Python code formatting tools designed to complement existing formatters like Black and isort.
 
 #### Key Features:
 - **Intelligent Docstring Formatting**: Automatic Google-style docstring formatting with support for all standard sections

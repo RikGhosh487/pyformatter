@@ -35,7 +35,7 @@
 Install pyformatter via pip:
 
 ```bash
-pip install pyformatter
+pip install python-doc-formatter
 ```
 
 Or install from source:
