@@ -25,7 +25,7 @@ def _format_param_section(
     """
     result = [f"\n{indent}{section_title}:"]
     param_indent = indent + " " * 4
-    continuation_indent = param_indent + " " * 8
+    continuation_indent = indent + " " * 8
 
     entry_re = re.compile(r"^\s*([a-zA-Z_][a-zA-Z0-9_]*)(?:\s*\(([^)]+)\))?:\s*(.*)$")
 
@@ -219,11 +219,11 @@ def format_examples_section(
         if not block:
             return
         if is_fenced_block(block):
-            result.extend(f"{param_indent}{line}" for line in block)
+            result.extend(f"{param_indent}{line.lstrip()}" for line in block)
             result.append("\n")
         else:
             result.append(f"{param_indent}```")
-            result.extend(f"{param_indent}{line}" for line in block)
+            result.extend(f"{param_indent}{line.lstrip()}" for line in block)
             result.append(f"{param_indent}```\n")
         block.clear()
 
@@ -235,6 +235,10 @@ def format_examples_section(
             result.append("\n")
 
     flush_block()
+
+    if result and result[-1].strip() == "":
+        result.pop()
+
     return [line + "\n" if not line.endswith("\n") else line for line in result]
 
 
