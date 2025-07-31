@@ -36,3 +36,7 @@ skip = ["build", "dist", "tests"]
 [tool.pycommentfmt]
 line_length = 88
 exclude = '(^tests/data/|build/)'
+
+[tool.pydocfmt]
+line_length = 88
+exclude = '(^tests/data/|build/)'

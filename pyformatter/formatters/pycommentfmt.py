@@ -7,8 +7,9 @@ import tokenize
 def format_comments(path: str, line_length: int, check: bool = False) -> bool:
     """Format comments in a Python file.
 
-    This function reads a Python file, formats its comments to ensure they comply
-    with the specified line length.
+    This function reads a Python file, formats its comments to ensure they comply with
+    the specified line length. If `check` is True, it only checks if the file is
+    formatted correctly.
 
     Args:
         path (str): The path to the Python file.

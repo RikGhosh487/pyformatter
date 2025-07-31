@@ -7,8 +7,8 @@ def should_format_file(
 ) -> bool:
     """Determine if the file should be formatted.
 
-    This function checks if the file matches the include pattern
-    and does not match the exclude pattern.
+    This function checks if the file matches the include pattern and does not match the
+    exclude pattern.
 
     Args:
         file_path (str): The path to the file.

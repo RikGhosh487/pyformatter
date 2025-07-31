@@ -23,3 +23,9 @@ repos:
         language: python
         types: [python]
         require_serial: true
+      - id: pydocfmt
+        name: pydocfmt (formatter)
+        entry: pydocfmt
+        language: python
+        types: [python]
+        require_serial: true
