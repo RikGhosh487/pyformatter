@@ -383,13 +383,19 @@ def reflow(docstring: str, line_length: int, indent: str) -> list[str]:
 
     # Step 1: Parse summary + description + sections
     i = 0
-    summary = lines[0].strip() if lines else ""
+    summary_lines = []
     description_lines = []
 
-    i += 1
+    # Parse summary (consecutive non-empty lines from the start)
+    while i < len(lines) and lines[i].strip():
+        summary_lines.append(lines[i].strip())
+        i += 1
+
+    # Skip blank lines between summary and description
     while i < len(lines) and lines[i].strip() == "":
         i += 1
 
+    # Parse description (everything before sections)
     while i < len(lines):
         match = section_re.match(lines[i].strip())
         if match:
@@ -413,7 +419,27 @@ def reflow(docstring: str, line_length: int, indent: str) -> list[str]:
         add_section(current_section, buffer)
 
     # Step 2: Format summary and description
-    result.append(f'{indent}"""{summary}\n')
+    if summary_lines:
+        # Join all summary lines and wrap them
+        summary_text = " ".join(summary_lines)
+        wrapped_summary = textwrap.wrap(
+            summary_text,
+            width=line_length - len(indent),
+            break_long_words=False,
+            drop_whitespace=True,
+        )
+
+        if wrapped_summary:
+            # First line includes the opening triple quotes
+            result.append(f'{indent}"""{wrapped_summary[0]}\n')
+            # Subsequent summary lines
+            for summary_line in wrapped_summary[1:]:
+                result.append(f"{indent}{summary_line}\n")
+        else:
+            result.append(f'{indent}"""\n')
+    else:
+        result.append(f'{indent}"""\n')
+
     if description_lines:
         result.append("\n")
         paragraph = []
@@ -443,8 +469,9 @@ def reflow(docstring: str, line_length: int, indent: str) -> list[str]:
                 result.append("\n")
                 paragraph.clear()
 
-    if result[-1].strip() == "":
-        result.pop()  # Remove the last empty line if it exists
+    # Remove trailing empty line if no sections follow
+    if result and result[-1].strip() == "" and not sections:
+        result.pop()
 
     # Step 3: Format sections
     for section, content in sections:
