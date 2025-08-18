@@ -1,0 +1,11 @@
+name: "GitHub Actions CodeQL Config"
+
+paths:
+  - ".github/workflows"
+
+paths-ignore:
+  - "**/*.md"
+  - "**/*.txt"
+
+queries:
+  - uses: security-and-quality
