@@ -67,7 +67,7 @@ updates:
       prefix: "ci"
       include: "scope"
     labels:
-      - "⚙️github actions"
+      - "⚙️ github actions"
       - "dependencies"
     groups:
       # Group GitHub Actions updates
